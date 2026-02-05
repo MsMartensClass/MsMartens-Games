@@ -3,11 +3,17 @@
 <head>
     <meta charset="utf-8">
     <title>Ms. Martens' Arcade</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@500&display=swap" rel="stylesheet">
+
     <style>
         body {
             background-color: #202020;
             color: white;
-            font-family: 'Courier New', Courier, monospace; /* Retro font */
+            /* Default font just in case */
+            font-family: 'Rubik', sans-serif; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,19 +22,30 @@
             margin: 0;
             text-align: center;
         }
+        
         h1 {
-            font-size: 3rem;
-            color: #4CAF50; /* Retro Green */
-            text-shadow: 2px 2px #000;
-            margin-bottom: 40px;
+            /* RETRO FONT FOR TITLE */
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem; /* Adjusted slightly as this font is wide */
+            line-height: 1.5;
+            color: #4CAF50; 
+            text-shadow: 4px 4px #000; /* Heavier shadow for retro look */
+            margin-bottom: 50px;
+            padding: 0 20px;
         }
+
         .game-container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .game-btn {
+            /* RUBIK FONT FOR BUTTONS */
+            font-family: 'Rubik', sans-serif;
+            font-weight: 500; /* Slightly bold for readability */
+            
             background-color: #333;
             border: 2px solid #555;
             color: white;
@@ -36,23 +53,36 @@
             text-decoration: none;
             font-size: 1.2rem;
             border-radius: 8px;
-            transition: all 0.3s;
+            transition: all 0.2s; /* Faster snap for game feel */
             min-width: 200px;
+            
+            /* Prevent text selection */
+            user-select: none;
         }
+
         .game-btn:hover {
             background-color: #4CAF50;
             color: black;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #4CAF50;
+            border-color: #4CAF50;
+            transform: translateY(-3px); /* Pop up effect */
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
             cursor: pointer;
+        }
+        
+        /* Optional: Add a subtle footer */
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
 
-    <h1>Ms. Martens' Arcade</h1>
+    <h1>Ms. Martens'<br>Arcade</h1>
 
     <div class="game-container">
+        
         <a href="carmen-deluxe/" class="game-btn">
             🕵️‍♀️ Carmen Sandiego
         </a>
@@ -60,6 +90,11 @@
         <a href="oregon-trail/" class="game-btn">
             🐂 Oregon Trail
         </a>
+
+    </div>
+
+    <div class="footer">
+        Select a game to load the emulator
     </div>
 
 </body>
