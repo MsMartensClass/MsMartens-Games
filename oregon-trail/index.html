@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Oregon Trail Deluxe</title>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+    <style>
+        body {
+            background-color: #202020;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 { margin-bottom: 10px; }
+        canvas { 
+            width: 800px; 
+            height: 600px; 
+            image-rendering: pixelated; 
+            border: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Oregon Trail Deluxe</h2>
+    <canvas id="jsdos"></canvas>
+
+    <script>
+        Dos(document.getElementById("jsdos"), {
+            wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+            cycles: "auto",
+        }).ready(function (fs, main) {
+            
+            // 1. Extract the zip file
+            fs.extract("oregondlx.zip").then(function () {
+                
+                // 2. Start Command
+                // "cd oregondlx" moves into the folder
+                // "OREGON.EXE" starts the game
+                main(["-c", "cd oregondlx", "-c", "OREGON.EXE"]);
+                
+            });
+        });
+    </script>
+</body>
+</html>
