@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Carmen Sandiego Deluxe</title>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+    <style>
+        body {
+            background-color: #202020;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 { margin-bottom: 10px; }
+        canvas { 
+            /* This keeps the aspect ratio correct */
+            width: 800px; 
+            height: 600px; 
+            image-rendering: pixelated; 
+            border: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Carmen Sandiego Deluxe</h2>
+    <canvas id="jsdos"></canvas>
+
+    <script>
+        Dos(document.getElementById("jsdos"), {
+            wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+            cycles: "auto",
+        }).ready(function (fs, main) {
+            
+            // 1. Load the renamed zip file
+            fs.extract("carmenusa.zip").then(function () {
+                
+                // 2. Commands to start the game
+                // We send a list of commands:
+                // "-c" "cd USAD" -> Change directory into the USAD folder
+                // "-c" "CARMEN.EXE" -> Run the game executable
+                main(["-c", "cd USAD", "-c", "CARMEN.EXE"]);
+                
+            });
+        });
+    </script>
+</body>
+</html>
