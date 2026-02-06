@@ -12,74 +12,82 @@
         body {
             background-color: #202020;
             color: white;
-            /* Default font just in case */
             font-family: 'Rubik', sans-serif; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh; /* changed to min-height for scrolling */
             margin: 0;
             text-align: center;
+            padding: 20px; /* Add padding so it doesn't touch edges on mobile */
         }
         
         h1 {
-            /* RETRO FONT FOR TITLE */
             font-family: 'Press Start 2P', cursive;
-            font-size: 2.5rem; /* Adjusted slightly as this font is wide */
+            font-size: 2.5rem;
             line-height: 1.5;
             color: #4CAF50; 
-            text-shadow: 4px 4px #000; /* Heavier shadow for retro look */
-            margin-bottom: 50px;
+            text-shadow: 4px 4px #000;
+            margin-bottom: 40px;
             padding: 0 20px;
         }
 
+        /* --- THE LAYOUT FIX IS HERE --- */
         .game-container {
             display: flex;
-            gap: 20px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: center; /* This keeps the bottom row centered */
+            gap: 20px;
+            
+            /* RESTRICT WIDTH: This forces the wrap after 3 items */
+            max-width: 900px; 
+            margin: 0 auto;
         }
 
         .game-btn {
-            /* RUBIK FONT FOR BUTTONS */
             font-family: 'Rubik', sans-serif;
-            font-weight: 500; /* Slightly bold for readability */
+            font-weight: 500;
             
             background-color: #333;
             border: 2px solid #555;
             color: white;
-            padding: 20px 40px;
+            padding: 20px 20px; /* Reduced side padding slightly */
             text-decoration: none;
             font-size: 1.2rem;
             border-radius: 8px;
-            transition: all 0.2s; /* Faster snap for game feel */
-            min-width: 200px;
+            transition: all 0.2s;
             
-            /* Prevent text selection */
+            /* SIZING LOGIC */
+            flex: 1 1 30%; /* Try to take up 30% of the row (3 per row) */
+            min-width: 250px; /* But don't get smaller than this */
+            
             user-select: none;
+            display: flex;       /* Flex inside button to center icon/text */
+            align-items: center;
+            justify-content: center;
         }
 
         .game-btn:hover {
             background-color: #4CAF50;
             color: black;
             border-color: #4CAF50;
-            transform: translateY(-3px); /* Pop up effect */
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
             cursor: pointer;
         }
         
-        /* Optional: Add a subtle footer */
         .footer {
             margin-top: 50px;
             font-size: 0.8rem;
             opacity: 0.5;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <h1>Ms. Martens'Arcade</h1>
+    <h1>Ms. Martens'<br>Arcade</h1>
 
     <div class="game-container">
         
@@ -94,13 +102,13 @@
         <a href="number-munchers/" class="game-btn">
             🟢 Number Munchers
         </a>
-        
+
         <a href="mario-typing/" class="game-btn">
             ⌨️ Mario Teaches Typing
         </a>
 
         <a href="tim2/" class="game-btn">
-            ⚙️ The Incredible Machine 2
+            ⚙️ Incredible Machine 2
         </a>
 
     </div>
